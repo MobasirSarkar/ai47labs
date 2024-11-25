@@ -8,7 +8,7 @@ import { CorsOptions } from "cors";
 import cors from "cors";
 
 dotenv.config();
-
+const PORT = process.env.PORT || "";
 const app: Express = express();
 let server: ReturnType<typeof app.listen>;
 
@@ -31,8 +31,8 @@ async function main() {
 		app.use(cors(corsOptions));
 		app.get("/subscribers", GetALLSubscribers);
 
-		app.listen(3000, () => {
-			logger.info(`Server is running at Port ${3000}`);
+		app.listen(PORT, () => {
+			logger.info(`Server is running at Port ${PORT}`);
 		});
 		// Graceful shutdown handling
 		process.on("SIGINT", () => shutdown());
