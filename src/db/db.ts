@@ -128,6 +128,10 @@ export class DbSetup {
 		);
 	}
 
+	async getAllSubscribers(): Promise<Subscription[]> {
+		return this.db.all<Subscription[]>(`SELECT * FROM subscriptions`);
+	}
+
 	async getActiveSubscriptions(): Promise<
 		{ userId: number; chatId: number; location: string; isBlocked: boolean }[]
 	> {
